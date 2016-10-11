@@ -7,8 +7,8 @@ Datadog middleware for Connect JS / Express
 
 Add middleware immediately before your router.
 
-	app.use(require("connect-datadog")({}));
-	app.use(app.router);
+  app.use(require("connect-datadog")({}));
+  app.use(app.router);
 
 ## Options
 
@@ -21,8 +21,15 @@ All options are optional.
 * `method` *boolean* include http method tag. `default = false`
 * `protocol` *boolean* include protocol tag. `default = false`
 * `response_code` *boolean* include http response codes. `default = false`
+* `statsCallback` *function* callback hook that provides the following params
+
+```js
+(stat, statTags, datadog, req, res) => {
+  // increment coolthing
+  datadog.increment(`${statTags}.coolthing`, 1, statTags);
+}
+```
 
 ## License
 
 View the [LICENSE](https://github.com/AppPress/node-connect-datadog/blob/master/LICENSE) file.
-
