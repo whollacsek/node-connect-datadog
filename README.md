@@ -26,7 +26,7 @@ All options are optional.
 ```js
 (stat, statTags, datadog, req, res) => {
   // increment coolthing
-  datadog.increment(`${statTags}.coolthing`, 1, statTags);
+  datadog.increment(`${stat}.coolthing`, 1, statTags);
 }
 ```
 
