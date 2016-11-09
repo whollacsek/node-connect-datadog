@@ -17,6 +17,7 @@ All options are optional.
 * `dogstatsd` node-dogstatsd client. `default = new (require("node-dogstatsd")).StatsD()`
 * `stat` *string* name for the stat. `default = "node.express.router"`
 * `tags` *array* of tags to be added to the histogram. `default = []`
+* `sampleRate` *number* sends only a sample of data to StatsD `default: 1`
 * `path` *boolean* include path tag. `default = false`
 * `method` *boolean* include http method tag. `default = false`
 * `protocol` *boolean* include protocol tag. `default = false`
@@ -24,9 +25,9 @@ All options are optional.
 * `statsCallback` *function* callback hook that provides the following params
 
 ```js
-(stat, statTags, datadog, req, res) => {
+(datadog, stat, sampleRate, statTags, req, res) => {
   // increment coolthing
-  datadog.increment(`${stat}.coolthing`, 1, statTags);
+  datadog.increment(`${stat}.coolthing`, sampleRate, statTags);
 }
 ```
 
